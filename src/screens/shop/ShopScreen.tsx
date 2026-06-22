@@ -42,6 +42,7 @@ const ShopScreen: React.FC = () => {
       <View style={styles.header}>
         <Text style={styles.wordmark}>LEGENDARI</Text>
         <Text style={styles.subtitle}>THE SHOP</Text>
+        <View style={styles.headerAccent} />
       </View>
 
       {/* Search */}
@@ -105,8 +106,19 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     paddingVertical: Spacing.sm,
+    paddingBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
+    position: 'relative',
+  },
+  headerAccent: {
+    position: 'absolute',
+    bottom: 0,
+    left: '20%',
+    right: '20%',
+    height: 1,
+    backgroundColor: Colors.primaryGold,
+    opacity: 0.25,
   },
   wordmark: {
     fontFamily: FontFamily.displayBold,
