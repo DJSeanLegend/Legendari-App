@@ -22,6 +22,7 @@ export type ProfileStackParamList = {
   Profile: undefined;
   OrderHistory: undefined;
   About: undefined;
+  Notifications: undefined;
 };
 
 export type MainTabParamList = {

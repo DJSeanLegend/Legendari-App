@@ -1,3 +1,4 @@
 export { CartProvider, useCartContext } from './CartContext';
 export { AuthProvider, useAuthContext } from './AuthContext';
 export { FavoritesProvider, useFavoritesContext } from './FavoritesContext';
+export { NotificationsProvider, useNotifications } from './NotificationsContext';

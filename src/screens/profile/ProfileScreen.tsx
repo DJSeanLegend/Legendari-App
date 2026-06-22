@@ -28,6 +28,7 @@ const ProfileScreen: React.FC = () => {
   const menuItems = [
     { icon: '📦', label: 'Order History', onPress: () => navigation.navigate('OrderHistory') },
     { icon: '♡', label: 'My Wishlist', onPress: () => {} },
+    { icon: '🔔', label: 'Notifications', onPress: () => navigation.navigate('Notifications') },
     { icon: '📍', label: 'Saved Addresses', onPress: () => {} },
     { icon: '💳', label: 'Payment Methods', onPress: () => {} },
     { icon: 'ℹ️', label: 'About Legendari', onPress: () => navigation.navigate('About') },

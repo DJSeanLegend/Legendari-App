@@ -13,6 +13,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuthContext } from '../../context/AuthContext';
+import { useNotifications } from '../../context/NotificationsContext';
 import { Colors, FontFamily, FontSize, Spacing } from '../../theme';
 
 const { height: SCREEN_H } = Dimensions.get('window');
@@ -25,7 +26,14 @@ const FEATURES = [
 
 const OnboardingScreen: React.FC = () => {
   const { completeOnboarding } = useAuthContext();
+  const { requestPermission, triggerWelcome } = useNotifications();
   const insets = useSafeAreaInsets();
+
+  const handleDiscover = async () => {
+    const granted = await requestPermission();
+    if (granted) await triggerWelcome();
+    completeOnboarding();
+  };
 
   // Animation values
   const bgScale      = useSharedValue(1.08);
@@ -115,14 +123,14 @@ const OnboardingScreen: React.FC = () => {
         <Animated.View style={btnStyle}>
           <TouchableOpacity
             style={styles.ctaBtn}
-            onPress={completeOnboarding}
+            onPress={handleDiscover}
             activeOpacity={0.82}
           >
             <Text style={styles.ctaText}>DISCOVER LEGENDARI</Text>
             <Ionicons name="arrow-forward" size={16} color={Colors.richBlack} style={{ marginLeft: 8 }} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.skipBtn} onPress={completeOnboarding} activeOpacity={0.7}>
+          <TouchableOpacity style={styles.skipBtn} onPress={handleDiscover} activeOpacity={0.7}>
             <Text style={styles.skipText}>Skip</Text>
           </TouchableOpacity>
         </Animated.View>
